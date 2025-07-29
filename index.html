@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محمد الهندي المهدي | المبرمج</title>
+  <style>
+    body { font-family: 'Cairo', sans-serif; direction: rtl; text-align: center; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+    header { background-color: #007BFF; color: white; padding: 20px; border-radius: 0 0 20px 20px; }
+    nav { background-color: #0056b3; padding: 10px; }
+    nav a { margin: 0 10px; color: white; text-decoration: none; font-weight: bold; }
+    section { padding: 40px 20px; max-width: 700px; margin: auto; }
+    input, button, textarea { padding: 10px; margin: 5px; width: 90%; max-width: 400px; }
+    form { background: #fff; padding: 20px; border-radius: 10px; margin-top: 20px; }
+    .tool-section { background: #f1f1f1; margin: 20px 0; border-radius: 10px; padding: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>مرحباً بك في موقعي الشخصي</h1>
+  <p>أنا <strong>محمد الهندي المهدي</strong>، مبرمج ومطور تطبيقات ومواقع</p>
+</header>
+
+<nav>
+  <a href="#home">الرئيسية</a>
+  <a href="#tools">برامج حسابية</a>
+  <a href="#contact">التواصل</a>
+</nav>
+
+<section id="home">
+  <h2>نبذة عني</h2>
+  <p>أعمل في مجال البرمجة وتطوير المواقع، وأسعى لتقديم حلول برمجية ذكية تساعد المستخدم في تسهيل المهام اليومية.</p>
+  <p>في هذا الموقع، ستجد أدوات حسابية مفيدة، بالإضافة إلى طريقة للتواصل معي مباشرة.</p>
+</section>
+
+<section id="tools">
+  <h2>برامج حسابية</h2>
+
+  <div class="tool-section">
+    <h3>حساب حجم الأسطوانة</h3>
+    <input id="r1" type="number" placeholder="نصف القطر">
+    <input id="h1" type="number" placeholder="الارتفاع">
+    <button onclick="calcCylinder()">احسب</button>
+    <p id="cylinderResult"></p>
+  </div>
+
+  <div class="tool-section">
+    <h3>حساب مساحة الدائرة</h3>
+    <input id="r2" type="number" placeholder="نصف القطر">
+    <button onclick="calcCircle()">احسب</button>
+    <p id="circleResult"></p>
+  </div>
+
+  <div class="tool-section">
+    <h3>حل معادلة من الدرجة الثانية</h3>
+    <input id="a" type="number" placeholder="المعامل a">
+    <input id="b" type="number" placeholder="المعامل b">
+    <input id="c" type="number" placeholder="المعامل c">
+    <button onclick="solveQuadratic()">احسب</button>
+    <p id="quadResult"></p>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>تواصل معي</h2>
+  <form onsubmit="alert('تم الإرسال بنجاح!'); return false;">
+    <input type="text" placeholder="اسمك" required>
+    <input type="email" placeholder="بريدك الإلكتروني" required>
+    <textarea rows="4" placeholder="رسالتك" required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+
+  <p>أو تواصل معي مباشرة:</p>
+  <p>📧 البريد: <strong>Mohammed.alhendy@gmail.com</strong></p>
+  <p>📞 واتساب: <strong>+249 99 223 6030</strong></p>
+</section>
+
+<script>
+  function calcCylinder() {
+    let r = parseFloat(document.getElementById("r1").value);
+    let h = parseFloat(document.getElementById("h1").value);
+    let v = Math.PI * r * r * h;
+    document.getElementById("cylinderResult").innerText = "الحجم = " + v.toFixed(2);
+  }
+
+  function calcCircle() {
+    let r = parseFloat(document.getElementById("r2").value);
+    let area = Math.PI * r * r;
+    document.getElementById("circleResult").innerText = "المساحة = " + area.toFixed(2);
+  }
+
+  function solveQuadratic() {
+    let a = parseFloat(document.getElementById("a").value);
+    let b = parseFloat(document.getElementById("b").value);
+    let c = parseFloat(document.getElementById("c").value);
+    let d = b * b - 4 * a * c;
+    if (d < 0) {
+      document.getElementById("quadResult").innerText = "لا يوجد حلول حقيقية";
+    } else {
+      let x1 = (-b + Math.sqrt(d)) / (2 * a);
+      let x2 = (-b - Math.sqrt(d)) / (2 * a);
+      document.getElementById("quadResult").innerText = `الحل x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+    }
+  }
+</script>
+
+</body>
+</html>
